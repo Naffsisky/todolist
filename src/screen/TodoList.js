@@ -79,7 +79,7 @@ const TodoList = () => {
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'padding'}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     padding: 16,
-    paddingBottom: 40,
+    // paddingBottom: 40,
     backgroundColor: '#fff',
     borderTopEndRadius: 16,
     borderTopStartRadius: 16,
