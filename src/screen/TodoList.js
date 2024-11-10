@@ -76,72 +76,71 @@ const TodoList = () => {
     );
   }
 
+  let i = 0;
+
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'padding'}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <StatusBar hidden />
-          <Text
-            style={{
-              fontSize: 24,
-              fontWeight: 'bold',
-              color: '#fff',
-              textAlign: 'center',
-              paddingVertical: 16,
-            }}>
-            To Do List
-          </Text>
-          <FlatList
-            data={tasks}
-            style={{paddingHorizontal: 16}}
-            renderItem={({item}) => (
-              <TodoItem
-                key={item.id}
-                task={item}
-                deleteTask={deleteTask}
-                toggleCompleted={toggleCompleted}
-              />
-            )}
-            keyExtractor={item => item.id.toString()}
-            contentContainerStyle={{flexGrow: 1}}
-            showsVerticalScrollIndicator={true}
-          />
-          <View style={styles.buttonContainer}>
-            <TextInput
-              value={text}
-              onChangeText={setText}
-              placeholder="Nama Barang"
-              placeholderTextColor="#000"
-              style={styles.input}
+      <View style={styles.container}>
+        <StatusBar hidden />
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: 'bold',
+            color: '#fff',
+            textAlign: 'center',
+            paddingVertical: 16,
+          }}>
+          To Do List
+        </Text>
+        <FlatList
+          data={tasks}
+          style={{paddingHorizontal: 16}}
+          renderItem={({item}) => (
+            <TodoItem
+              key={item.id}
+              task={item}
+              deleteTask={deleteTask}
+              toggleCompleted={toggleCompleted}
             />
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <TextInput
-                value={textTotal}
-                onChangeText={setTextTotal}
-                placeholder="Total"
-                placeholderTextColor="#000"
-                style={styles.inputAddOn}
-                keyboardType="numeric"
-              />
-              <TextInput
-                value={textPrice}
-                onChangeText={setTextPrice}
-                placeholder="Harga"
-                placeholderTextColor="#000"
-                style={styles.inputAddOn}
-                keyboardType="numeric"
-              />
-            </View>
-            <TouchableOpacity onPress={addTask} style={styles.addButton}>
-              <Text style={styles.addButtonText}>Add</Text>
-            </TouchableOpacity>
+          )}
+          keyExtractor={item => item.id.toString()}
+          contentContainerStyle={{flexGrow: 1}}
+          showsVerticalScrollIndicator={true}
+        />
+        <View style={styles.buttonContainer}>
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            placeholder="Nama Barang"
+            placeholderTextColor="#000"
+            style={styles.input}
+          />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <TextInput
+              value={textTotal}
+              onChangeText={setTextTotal}
+              placeholder="Total"
+              placeholderTextColor="#000"
+              style={styles.inputAddOn}
+              keyboardType="numeric"
+            />
+            <TextInput
+              value={textPrice}
+              onChangeText={setTextPrice}
+              placeholder="Harga"
+              placeholderTextColor="#000"
+              style={styles.inputAddOn}
+              keyboardType="numeric"
+            />
           </View>
+          <TouchableOpacity onPress={addTask} style={styles.addButton}>
+            <Text style={styles.addButtonText}>Add</Text>
+          </TouchableOpacity>
         </View>
-      </TouchableWithoutFeedback>
+      </View>
     </KeyboardAvoidingView>
   );
 };
